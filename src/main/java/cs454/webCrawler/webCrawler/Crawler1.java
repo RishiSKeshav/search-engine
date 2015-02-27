@@ -36,7 +36,7 @@ public class Crawler1
 				Dname = getDomainName(URL);
 				flag=1;
 			}
-			
+			System.out.println("count: " + count);
 			if(count>2)
 				return;
 			
@@ -46,7 +46,10 @@ public class Crawler1
 				LinksSet.add(URL);
 				java.net.URI objurl = new java.net.URI(URL);
 				String dname = objurl.getHost();
-				dname = getDomainName(dname);
+				
+				if(dname!=null){
+				dname = getDomainName(dname);				
+				
 				if (!dname.equalsIgnoreCase(this.Dname))
 					return;
 				Document doc = Jsoup.connect(URL.toString()).get();
@@ -65,6 +68,7 @@ public class Crawler1
 						
 				}
 				count++;
+			}
 			}
 		//printUrl(LinksSet);
 	} catch (IOException e) {
