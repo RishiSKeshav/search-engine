@@ -53,11 +53,13 @@ public class Crawler1
 				//System.out.println(URL);
 				//count++;
 				System.out.println(URL);
+				
+				new Crawl().parse(URL);
 				Elements questions = doc.select("a[href]");
 				System.out.println("----------------------------------------------------------------------");
-				for(Element meta : doc.select("meta")) {
+				/*for(Element meta : doc.select("meta")) {
 				    System.out.println("Name: " + meta.attr("name") + " - Content: " + meta.attr("content"));
-				}
+				}*/
 				for (Element link : questions) {
 						getCawling(link.attr("abs:href"));
 						

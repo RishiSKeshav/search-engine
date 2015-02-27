@@ -14,14 +14,14 @@ public class App
     	
     	try
 		{
-			new Crawler1().getCawling("http://ven.lewebdev.com/");
+			new Crawler1().getCawling("http://web.mit.edu/");
 		}
 		catch (SSLHandshakeException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	/*Crawl.parse("http://www.ven.lewebdev.com/");*/
+    	//Crawl.parse("http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf");
     	/*if(args[0]!= null)
     	{
     		int depth = Integer.parseInt(args[1]);

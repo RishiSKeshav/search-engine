@@ -32,6 +32,7 @@ public class Storage
 	    	
 	    	metadata1.put("title", metadata.get("title"));
 	    	metadata1.put("type", metadata.get("type"));
+	    	metadata1.put("met", metadata.get("met"));
 	    	metadata1.put("url", metadata.get("url"));
 		    metadata1.put("last pulled", metadata.get("last pulled"));
 		    metadata1.put("localpath", metadata.get("localpath"));	    	
@@ -51,9 +52,9 @@ public class Storage
 				
 				linkObj.put("Anchor", l.getText());
 				linkObj.put("targetURL", l.getUri());
-				
+				/*
 				System.out.println("Anchor: " + linkObj.get("Anchor"));
-				System.out.println("targetURL: "+ linkObj.get("targetURL"));
+				System.out.println("targetURL: "+ linkObj.get("targetURL"));*/
 				
 				Gson prettyGson1 = new GsonBuilder().setPrettyPrinting().create();
 				Gson uglyJson1 = new Gson();

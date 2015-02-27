@@ -47,6 +47,10 @@ public class Crawl
 		    String title = met.get(Metadata.TITLE);
 		    String type = met.get(Metadata.CONTENT_TYPE);
 		    
+		    /*for(Metadata m : met){
+		    	System.out.println(m);
+		    }*/
+		    
 		    /*System.out.println(met.get(Metadata.TITLE));
 		    System.out.println(met.get(Metadata.CONTENT_TYPE));
 		    System.out.println(url);*/
@@ -92,6 +96,7 @@ public class Crawl
 		    
 		    metadata.put("title",title);
 		    metadata.put("type", type);
+		    metadata.put("met", met);
 		    metadata.put("url", url);
 		    metadata.put("last pulled", date);		    
 		    metadata.put("links", links);
