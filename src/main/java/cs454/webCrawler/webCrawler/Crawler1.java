@@ -19,7 +19,7 @@ public class Crawler1
 	int flag=0;
 	String Dname="";
 	
-	void getCawling(String URL,int depth) throws SSLHandshakeException {
+	void crawl(String URL,int depth) throws SSLHandshakeException {
 		try {
 			//uuid=UUID.randomUUID();
 			/*if(URL.toLowerCase().contains(".pdf"))
@@ -64,7 +64,7 @@ public class Crawler1
 				    System.out.println("Name: " + meta.attr("name") + " - Content: " + meta.attr("content"));
 				}*/
 				for (Element link : questions) {
-						getCawling(link.attr("abs:href"),depth);
+					crawl(link.attr("abs:href"),depth);
 						
 				}
 				count++;

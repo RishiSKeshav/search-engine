@@ -14,7 +14,7 @@ public class App
     	
     	/*try
 		{
-			new Crawler1().getCawling("http://web.mit.edu/");
+			new Crawler1().crawl("http://web.mit.edu/",2);
 		}
 		catch (SSLHandshakeException e)
 		{
@@ -31,11 +31,13 @@ public class App
     		Crawler.walk(args[0],depth);
     	}*/
     	
+    	System.out.println(args[0]);
     	
-    	if(args[0]!=null && args[1]!=null){
+    	
+    	if(args[0]!=null){
     		try
     		{
-    			new Crawler1().getCawling(args[0],Integer.parseInt(args[1]));
+    			new Crawler1().crawl(args[0],2);
     		}
     		catch (SSLHandshakeException e)
     		{
