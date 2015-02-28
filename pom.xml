@@ -7,7 +7,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>webCrawler</name>
+  <name>Crawler</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -95,7 +95,7 @@
                 <configuration>
                     <mainClass>cs454.webCrawler.webCrawler.App</mainClass>
                     <arguments>
-                        <argument>http://stackoverflow.com/questions/15305883/jsoup-document-baseuri-issue</argument>
+                        <argument>http://web.mit.edu/</argument>
                         <argument>2</argument>
                     </arguments>
                 </configuration>

@@ -12,7 +12,7 @@ public class App
     {
     	//Crawler.walk("http://www.vfx.lewebdev.com/a.html",2);
     	
-    	try
+    	/*try
 		{
 			new Crawler1().getCawling("http://web.mit.edu/");
 		}
@@ -20,7 +20,7 @@ public class App
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
     	//Crawl.parse("http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf");
     	/*if(args[0]!= null)
     	{
@@ -30,5 +30,18 @@ public class App
     		
     		Crawler.walk(args[0],depth);
     	}*/
+    	
+    	
+    	if(args[0]!=null && args[1]!=null){
+    		try
+    		{
+    			new Crawler1().getCawling(args[0],Integer.parseInt(args[1]));
+    		}
+    		catch (SSLHandshakeException e)
+    		{
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    	}
     }
 }
