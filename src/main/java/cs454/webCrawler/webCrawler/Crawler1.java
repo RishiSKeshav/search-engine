@@ -18,6 +18,7 @@ public class Crawler1
 	List<String> LinksSet = new ArrayList<String>();
 	int flag=0;
 	String Dname="";
+	ArrayList<String> domainName=new ArrayList<String>();
 	
 	void crawl(String URL,int depth) throws SSLHandshakeException {
 		try {
@@ -31,12 +32,20 @@ public class Crawler1
 			fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
 			return;
 			}*/
+			
 			if(flag==0){
 				
 				Dname = getDomainName(URL);
 				flag=1;
 			}
-			System.out.println("count: " + count);
+			
+			if(!domainName.contains(getDomainName(URL)))
+			{
+				domainName.add(getDomainName(URL));
+			}
+			
+			
+			//System.out.println("count: " + count);
 			if(count>depth)
 				return;
 			

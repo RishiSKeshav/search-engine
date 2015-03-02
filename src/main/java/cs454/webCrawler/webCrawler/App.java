@@ -1,6 +1,5 @@
 package cs454.webCrawler.webCrawler;
 
-import javax.net.ssl.SSLHandshakeException;
 
 /**
  * Hello world!
@@ -14,13 +13,25 @@ public class App
     	
     	/*try
 		{
-			new Crawler1().crawl("http://web.mit.edu/",2);
+			new Crawler2().crawl("http://www.vfx.lewebdev.com/a.html",2);
 		}
-		catch (SSLHandshakeException e)
+		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+    	
+    	/*try
+		{
+			new Crawler2().crawl(args[0],Integer.parseInt(args[1]));
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+    	
+    	
     	//Crawl.parse("http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf");
     	/*if(args[0]!= null)
     	{
@@ -31,15 +42,17 @@ public class App
     		Crawler.walk(args[0],depth);
     	}*/
     	
-    	System.out.println(args[0]);
+    	
     	
     	
     	if(args[0]!=null){
     		try
     		{
-    			new Crawler1().crawl(args[0],2);
+    			System.out.println(args[0]);
+    	    	System.out.println(args[1]);
+    			new Crawler2().crawl(args[0].trim(),Integer.parseInt(args[1]));
     		}
-    		catch (SSLHandshakeException e)
+    		catch (Exception e)
     		{
     			// TODO Auto-generated catch block
     			e.printStackTrace();
