@@ -1,6 +1,7 @@
 package cs454.webCrawler.webCrawler;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
@@ -18,6 +19,9 @@ import org.apache.tika.sax.Link;
 import org.apache.tika.sax.LinkContentHandler;
 import org.apache.tika.sax.TeeContentHandler;
 import org.apache.tika.sax.ToHTMLContentHandler;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.xml.sax.ContentHandler;
 
 public class Crawl
@@ -123,5 +127,21 @@ public class Crawl
 		}
 	}
 	
+	
+	public void parse1(String URL)
+	{
+		try
+		{		
+			Map<String,Object> metadata =new HashMap<String, Object>();
+			
+			Document doc = Jsoup.connect(URL).get();
+			System.out.println(Jsoup.parse(doc.toString()).text());
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
