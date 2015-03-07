@@ -26,10 +26,12 @@ import org.xml.sax.ContentHandler;
 
 public class Crawl
 {
-	
+	static File file1;
 	@SuppressWarnings("deprecation")
 	public static void parse(String url1)
 	{
+		
+		
 		try
 		{
 			Map<String,Object> metadata = new HashMap<String, Object>();
@@ -81,7 +83,7 @@ public class Crawl
 		    /*String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\"+ fileName1;*/
 		    String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";
 		    
-		    File file1 = new File(localpath1);
+		    file1 = new File(localpath1);
 		    
 		    String fileName2 = uuid + ".txt";
 		    String localpath2 = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName2;
@@ -108,7 +110,7 @@ public class Crawl
 		    
 		    if(type.contains("text/html")){
 		    	metadata.put("localpath", file2.getAbsolutePath());
-		    	Storage.save(metadata,file1);
+		    	Storage.save(metadata,file1);		    	
 		    	Storage.saveContent(toHTMLHandler,file2);
 		    }
 		    else{   
@@ -143,6 +145,12 @@ public class Crawl
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public File getFile()
+	{
+		return file1;
 	}
 
 }

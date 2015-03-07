@@ -16,9 +16,11 @@ import org.json.simple.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.simple.JSONArray;
+
 public class Storage
 {
-
+	static JSONArray jsonArray = new JSONArray();
 	
 	public static void save(Map<String, Object> metadata, File file1) {
 		
@@ -37,7 +39,7 @@ public class Storage
 		    metadata1.put("last pulled", metadata.get("last pulled"));
 		    metadata1.put("localpath", metadata.get("localpath"));	    	
 	    	
-		    System.out.println(metadata1.get("localpath"));
+		   // System.out.println(metadata1.get("localpath"));
 		    
 	    	List<Link> links =(List<Link>) metadata.get("links");
 	    	Map<Integer,Object> linksToPut = new HashMap<Integer, Object>();
@@ -71,13 +73,20 @@ public class Storage
 					obj.put(entry.getKey(), entry.getValue());
 			}
 			
+			
+			
+			
 			/*http://examples.javacodegeeks.com/core-java/gson/gsonbuilder/enable-pretty-print-json-output-using-gson-example/
 */			
 			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
 			Gson uglyJson = new Gson();
 			String pretJson = prettyGson.toJson(obj);
+			
+			jsonArray.add(obj);
+			
+			//return obj;
 		    
-			String path = file1.getAbsolutePath();
+			/*String path = file1.getAbsolutePath();
 			
 			FileWriter file = new FileWriter(path,true);
 			file.write(pretJson);
@@ -86,17 +95,41 @@ public class Storage
 			file.close();
 			
 			
-			System.out.println("Done");
+			System.out.println("Done");*/
 	    }
-	    
-	    
-	    
+	    catch(Exception e)
+	    {
+	    	
+	    }
+	}
+	
+	
+	public static void writeFile(File file1)
+	{
+		try
+		{
+			String path = file1.getAbsolutePath();
+			
+			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+			Gson uglyJson = new Gson();
+			String pretJson = prettyGson.toJson(jsonArray);
+			
+			
+			FileWriter file = new FileWriter(path,true);
+			file.write(pretJson.toString());
+			file.write("\n\n");
+			file.flush();
+			file.close();
+			
+			
+			System.out.println("Done");
+		}
+
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 	}
 

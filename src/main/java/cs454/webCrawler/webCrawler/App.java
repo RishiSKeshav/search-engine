@@ -1,5 +1,7 @@
 package cs454.webCrawler.webCrawler;
 
+import java.io.File;
+
 
 /**
  * Hello world!
@@ -7,11 +9,17 @@ package cs454.webCrawler.webCrawler;
  */
 public class App 
 {
+	public static void write(File file)
+	{
+		Storage.writeFile(file);
+	}
+	
+	
     public static void main( String[] args )
     {
     	//Crawler.walk("http://www.vfx.lewebdev.com/a.html",2);
     	
-    	try
+    	/*try
 		{
 			new Crawler2().crawl("http://www.calstatela.edu/",2);
 		}
@@ -19,7 +27,7 @@ public class App
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
     	
     	/*try
 		{
@@ -45,18 +53,20 @@ public class App
     	
     	
     	
-    	/*if(args[0]!=null){
+    	if(args[1]!=null && args[3]!=null){
     		try
     		{
-    			System.out.println(args[0]);
-    	    	System.out.println(args[1]);
-    			new Crawler2().crawl(args[0].trim(),Integer.parseInt(args[1]));
+    			System.out.println("Crawling started with " + args[1]);
+    			
+    			new Crawler2().crawl(args[1].trim(),Integer.parseInt(args[3]));
     		}
     		catch (Exception e)
     		{
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
-    	}*/
+    	}
+    	
+    	Storage.writeFile(Crawl.file1);
     }
 }

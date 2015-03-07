@@ -25,20 +25,27 @@ public class Crawler2
 	int flag=0;
 	String Dname="";
 	ArrayList<String> domainName=new ArrayList<String>();
-	
+	int flag1=0;
+	int flag2=0;
+	String Dname1="";
+	Map<String,Integer> domainCount = new HashMap<String, Integer>();
+	static int i=0;
 	
 	public  void crawl(String url1,int depth)
 	{
+		
 		try
 		{
 
-			if(flag==0){
+			if(flag==0)
+			{
 			//Dname="mit.edu";
 			Dname = getDomainName(url1);
 			flag=1;
-		}
+			}
 			
-			
+			System.out.println();
+			System.out.println("Crawling: " + url1);
 			
 			Tika tika = new Tika();
 			tika.setMaxStringLength(10*1024*1024); 
@@ -58,9 +65,15 @@ public class Crawler2
 		    
 		    List<Link> links = linkHandler.getLinks();
 		    
-		    if(links !=null && links.size()>0){
-		    	if(count<depth)
-		    		for(Link l:links){
+		    
+		    if(i<100)
+		    {
+		    
+		    if(links !=null && links.size()>0)
+		    {
+		    	//if(count<depth)
+		    		for(Link l:links)
+		    		{
 		    		/*	System.out.println("link: " + l);
 		    			System.out.println("Type: " + l.getType());
 		    			System.out.println(l.getUri().startsWith("http"));
@@ -69,21 +82,77 @@ public class Crawler2
 		    			//String innerURLDomain = getDomainName(l.getRel());
 		    			if(l.getUri().startsWith("http"))
 		    			{
+		    				i++;
 		    				if(getDomainName(l.getUri()).equals(Dname))
-		    					if(!LinksSet.contains(l.getUri())){
-		    					
-				    		
-		    					LinksSet.add(l.getUri());
-		    					System.out.println(l.getUri());
-		    					crawl(l.getUri(),depth);
+		    				{		    				
+		    					if(!LinksSet.contains(l.getUri()))
+		    					{	
+		    						
+		    						/*if(flag2==0)
+		    						{
+		    							//domainCount.put(getDomainName(l.getUri()), i);
+		    							flag2=1;
+		    						}
+		    						
+		    						if(domainCount.containsKey(getDomainName(l.getUri())))
+		    						{
+		    							i= domainCount.get(getDomainName(l.getUri()));
+		    							domainCount.remove(getDomainName(l.getUri()));
+		    							i++;
+		    							domainCount.put(getDomainName(l.getUri()), i);
+		    						}
+		    						else
+		    							domainCount.put(getDomainName(l.getUri()), i);
+		    						
+		    						if(i==5)
+		    						{
+		    							return;
+		    						}*/
+		    						
+		    						
+		    						LinksSet.add(l.getUri());
+		    						//System.out.println(l.getUri());
+		    						crawl(l.getUri(),depth);
 		    					}
+		    				}
+		    				else
+		    				{
+		    					if(flag1==0)
+		    					{
+		    						Dname1= getDomainName(l.getUri());
+		    						flag1=1;
+		    					}	    					
+		    					
+		    					if(count<depth)
+		    					{
+		    						if(getDomainName(l.getUri()).equals(Dname1))
+		    						{
+		    							
+		    							if(!LinksSet.contains(l.getUri()))
+				    					{		
+		    								count++;	    		
+				    						LinksSet.add(l.getUri());
+				    						System.out.println("Current Depth: " + count +"\n");
+				    						crawl(l.getUri(),depth);
+				    					}
+		    						}
+		    					}
+		    					else
+		    					{
+		    						flag1=0;
+		    						count=0;
+		    						continue;
+		    					}
+		    				}
 		    			}
 		    			else
-		    				continue;
-		    }		}
+		    				continue;		    			
+		    		}
+		    }
 		    else
 		    	return; 
 		    
+		}
 		}
 		catch(Exception e)
 		{
