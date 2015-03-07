@@ -122,11 +122,11 @@ public class Crawl
 		    			
 		}
 		catch (  MalformedURLException e1) {		    
-		    e1.printStackTrace();
+		    System.out.println("Malformed URl");
 		  }
 		
 		catch (Exception e){
-			e.printStackTrace();
+			System.out.println("");
 		}
 	}
 	
