@@ -31,35 +31,13 @@ public class Crawler2
 	{
 		try
 		{
-				if(flag==0){
-				//Dname="mit.edu";
-				Dname = getDomainName(url1);
-				flag=1;
-			}
+
+			if(flag==0){
+			//Dname="mit.edu";
+			Dname = getDomainName(url1);
+			flag=1;
+		}
 			
-			/*if(!domainName.contains(getDomainName(url1)))
-			{
-				domainName.add(getDomainName(url1));
-			}*/
-			
-			
-			//System.out.println("count: " + count);
-			if(count>depth)
-				return;
-			
-			if (LinksSet.contains(url1)) {
-				return;
-			}else{
-				LinksSet.add(url1);
-				java.net.URI objurl = new java.net.URI(url1);
-				String dname = objurl.getHost();
-				
-				if(dname!=null){
-					//dname="mit.edu";
-				dname = getDomainName(dname);				
-				
-				if (!dname.equalsIgnoreCase(this.Dname))
-					return;
 			
 			
 			Tika tika = new Tika();
@@ -80,8 +58,109 @@ public class Crawler2
 		    
 		    List<Link> links = linkHandler.getLinks();
 		    
+		    if(links !=null && links.size()>0){
+		    	if(count<depth)
+		    		for(Link l:links){
+		    		/*	System.out.println("link: " + l);
+		    			System.out.println("Type: " + l.getType());
+		    			System.out.println(l.getUri().startsWith("http"));
+		    			System.out.println();*/	    			
+		    			
+		    			//String innerURLDomain = getDomainName(l.getRel());
+		    			if(l.getUri().startsWith("http"))
+		    			{
+		    				if(getDomainName(l.getUri()).equals(Dname))
+		    					if(!LinksSet.contains(l.getUri())){
+		    					
+				    		
+		    					LinksSet.add(l.getUri());
+		    					System.out.println(l.getUri());
+		    					crawl(l.getUri(),depth);
+		    					}
+		    			}
+		    			else
+		    				continue;
+		    }		}
+		    else
+		    	return; 
+		    
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*try
+		{
+				if(flag==0){
+				//Dname="mit.edu";
+				Dname = getDomainName(url1);
+				flag=1;
+			}
+			
+			if(!domainName.contains(getDomainName(url1)))
+			{
+				domainName.add(getDomainName(url1));
+			}
+			
+			
+			//System.out.println("count: " + count);
+			if(count>depth)
+				return;
+			
+			if (LinksSet.contains(url1)) {
+				return;
+			}else{
+				LinksSet.add(url1);
+				java.net.URI objurl = new java.net.URI(url1);
+				String dname = objurl.getHost();
+				
+				if(dname!=null){
+					//dname="mit.edu";
+				dname = getDomainName(dname);				
+				
+				if (!dname.equalsIgnoreCase(this.Dname)){
+					count++;
+					return;
+				}
+			
+			
+			Tika tika = new Tika();
+			tika.setMaxStringLength(10*1024*1024); 
+			Metadata met=new Metadata();
+			URL url = new URL(url1);
+			
+			ToHTMLContentHandler toHTMLHandler=new ToHTMLContentHandler();
+			ParseContext parseContext=new ParseContext();
+			LinkContentHandler linkHandler = new LinkContentHandler();
+			ContentHandler textHandler = new BodyContentHandler(10*1024*1024);
+			TeeContentHandler teeHandler = new TeeContentHandler(linkHandler, textHandler, toHTMLHandler);		
+			
+			AutoDetectParser parser=new AutoDetectParser();
+		    parser.parse(url.openStream(),teeHandler,met,parseContext);
+		
+		    new Crawl().parse(url1);
+		    
+		    List<Link> links = linkHandler.getLinks();
+		    
+		    System.out.println("Current depth: " + count);
+		    
 		    for(Link l:links){
-		    	System.out.println(l);
+		    	
+		    	System.out.println(l.getUri());
 		    	crawl(l.getUri(),depth);
 		    }
 				}
@@ -98,7 +177,7 @@ public class Crawler2
 		
 		catch (Exception e){
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	private String getDomainName(String URL) {

@@ -11,15 +11,15 @@ public class App
     {
     	//Crawler.walk("http://www.vfx.lewebdev.com/a.html",2);
     	
-    	/*try
+    	try
 		{
-			new Crawler2().crawl("http://www.vfx.lewebdev.com/a.html",2);
+			new Crawler2().crawl("http://www.calstatela.edu/",2);
 		}
 		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
     	
     	/*try
 		{
@@ -45,7 +45,7 @@ public class App
     	
     	
     	
-    	if(args[0]!=null){
+    	/*if(args[0]!=null){
     		try
     		{
     			System.out.println(args[0]);
@@ -57,6 +57,6 @@ public class App
     			// TODO Auto-generated catch block
     			e.printStackTrace();
     		}
-    	}
+    	}*/
     }
 }

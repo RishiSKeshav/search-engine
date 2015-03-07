@@ -79,7 +79,7 @@ public class Storage
 		    
 			String path = file1.getAbsolutePath();
 			
-			FileWriter file = new FileWriter(path);
+			FileWriter file = new FileWriter(path,true);
 			file.write(pretJson);
 			file.write("\n\n");
 			file.flush();

@@ -78,7 +78,8 @@ public class Crawl
 		    }*/
 		    
 		    String fileName1 = uuid + ".json";
-		    String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\"+ fileName1;
+		    /*String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\"+ fileName1;*/
+		    String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";
 		    
 		    File file1 = new File(localpath1);
 		    
