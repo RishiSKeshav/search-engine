@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.tika.Tika;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
@@ -53,6 +54,10 @@ public class Crawl
 		    String title = met.get(Metadata.TITLE);
 		    String type = met.get(Metadata.CONTENT_TYPE);
 		    
+		    System.out.println(type);
+		    /*System.out.println(FilenameUtils.getBaseName(url1));
+		    System.out.println(FilenameUtils.getExtension(url1));*/
+		    
 		    /*for(Metadata m : met){
 		    	System.out.println(m);
 		    }*/
@@ -79,28 +84,6 @@ public class Crawl
 		    	System.out.println("target URL: " + l.getUri());
 		    }*/
 		    
-		    String fileName1 = uuid + ".json";
-		    /*String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\"+ fileName1;*/
-		    String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";
-		    
-		    file1 = new File(localpath1);
-		    
-		    String fileName2 = uuid + ".txt";
-		    String localpath2 = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName2;
-		    
-		    File file2 = new File(localpath2);
-		    
-		    
-		    String fileName="";
-		    String fileType="";
-		    
-		    fileType = url1.substring(url1.lastIndexOf("."),
-		    		url1.length());
-        	fileName= uuid+fileType;
-		    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;
-		    
-		    File file = new File(localpath);
-		    
 		    metadata.put("title",title);
 		    metadata.put("type", type);
 		    metadata.put("met", met);
@@ -108,17 +91,143 @@ public class Crawl
 		    metadata.put("last pulled", date);		    
 		    metadata.put("links", links);
 		    
-		    if(type.contains("text/html")){
-		    	metadata.put("localpath", file2.getAbsolutePath());
-		    	Storage.save(metadata,file1);		    	
-		    	Storage.saveContent(toHTMLHandler,file2);
-		    }
-		    else{   
-		    	metadata.put("localpath", file.getAbsolutePath());
-		    	Storage.save(metadata,file1);
-		    	Download.downloadFile(url1, localpath);		    	
+		    String fileName1 = uuid + ".json";
+		    /*String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\"+ fileName1;*/
+		    String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";		    
+		    file1 = new File(localpath1);
+		    
+		    String fileName2 = uuid + ".txt";
+		    String localpath2 = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName2;		    
+		    File file2 = new File(localpath2);
+		    		    
+		    String fileName="";
+		    String fileType="";		    
+		    
+		    if(type.equals("application/vnd.ms-powerpoint"))
+		    {
+		    	fileType = ".ppt";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath); 
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    	
 		    }
 		    
+		    if(type.equals("application/vnd.xml"))
+		    {
+		    	fileType = ".xml";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);  
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		    
+		    if(type.equals("application/vnd.ms-excel"))
+		    {
+		    	fileType = ".xlsx";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);  
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		    if(type.equals("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
+		    {
+		    	fileType = ".doc";
+		    	fileType = ".xlsx";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);  
+		    	
+		    	metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		    /*if(type.equals("application/vnd.ms-xpsdocument"))
+		    {
+		    	fileType = ".ppt";
+		    }*/
+		    if(type.equals("image/gif"))
+		    {
+		    	fileType = ".gif";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);  
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		    if(type.equals("image/png"))
+		    {
+		    	fileType = ".png";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		    
+		    if(type.equals("image/jpeg"))
+		    {
+		    	fileType = ".jpg";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);  
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		    if(type.equals("application/octet-stream"))
+		    {
+		    	fileType = ".pdf";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);  
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		    if(type.equals("application/pdf"))
+		    {
+		    	fileType = ".pdf";
+		    	fileName= uuid+fileType;
+			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    File file = new File(localpath);  
+			    
+			    metadata.put("localpath", file.getAbsolutePath());
+		    	boolean flag = Download.downloadFile(url1, localpath);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);
+		    }
+		  
+		    
+		    if(type.contains("text/html")){
+		    	metadata.put("localpath", file2.getAbsolutePath());		    		    	
+		    	boolean flag = Storage.saveContent(toHTMLHandler,file2);
+		    	if(flag==true)
+		    		Storage.save(metadata,file1);	
+		    }
 		    			
 		}
 		catch (  MalformedURLException e1) {		    

@@ -66,7 +66,7 @@ public class Crawler2
 		    List<Link> links = linkHandler.getLinks();
 		    
 		    
-		    if(i<100)
+		    if(i<300)
 		    {
 		    
 		    if(links !=null && links.size()>0)

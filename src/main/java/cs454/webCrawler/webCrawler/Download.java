@@ -11,6 +11,9 @@ import java.util.UUID;
 
 public class Download 
 {
+	
+	/*http://www.codejava.net/java-se/networking/use-httpurlconnection-to-download-file-from-an-http-url*/
+	
 		private static final int BUFFER_SIZE = 4096;
 		 
 	    /**
@@ -19,7 +22,7 @@ public class Download
 	     * @param saveDir path of the directory to save the file
 	     * @throws IOException
 	     */
-	    public static void downloadFile(String fileURL, String saveDir)
+	    public static boolean downloadFile(String fileURL, String saveDir)
 	            throws IOException {
 	        URL url = new URL(fileURL);
 	        HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
@@ -68,9 +71,13 @@ public class Download
 	            inputStream.close();
 	 
 	            System.out.println("File downloaded");
+	            httpConn.disconnect();
+	            return true;
 	        } else {
 	            System.out.println("No file to download. Server replied HTTP code: " + responseCode);
+	            httpConn.disconnect();
+	            return false;
 	        }
-	        httpConn.disconnect();
+	        
 	    }
 }

@@ -17,43 +17,23 @@ public class App
 	
     public static void main( String[] args )
     {
+    	//Crawl.parse("http://www.apple.com/legal/procurement/docs/CLVIF.pdf");
+    	
+    	
     	//Crawler.walk("http://www.vfx.lewebdev.com/a.html",2);
     	
-    	/*try
+    	try
 		{
-			new Crawler2().crawl("http://www.calstatela.edu/",2);
+			new Crawler2().crawl("http://www.apple.com/",2);
 		}
 		catch (Exception e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}    	
+    	Storage.writeFile(Crawl.file1);
     	
-    	/*try
-		{
-			new Crawler2().crawl(args[0],Integer.parseInt(args[1]));
-		}
-		catch (Exception e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-    	
-    	
-    	//Crawl.parse("http://nlp.stanford.edu/IR-book/pdf/irbookonlinereading.pdf");
-    	/*if(args[0]!= null)
-    	{
-    		int depth = Integer.parseInt(args[1]);
-    		System.out.println( "Hello " + args[1] );
-    		
-    		
-    		Crawler.walk(args[0],depth);
-    	}*/
-    	
-    	
-    	
-    	
-    	if(args[1]!=null && args[3]!=null){
+    	/*if(args[1]!=null && args[3]!=null){
     		try
     		{
     			System.out.println("Crawling started with " + args[1]);
@@ -67,6 +47,6 @@ public class App
     		}
     	}
     	
-    	Storage.writeFile(Crawl.file1);
+    	Storage.writeFile(Crawl.file1);*/
     }
 }

@@ -133,7 +133,7 @@ public class Storage
 		
 	}
 
-	public static void saveContent(ToHTMLContentHandler toHTMLHandler, File file) {
+	public static boolean saveContent(ToHTMLContentHandler toHTMLHandler, File file) {
 		
 		String path = file.getAbsolutePath();
 		
@@ -145,11 +145,13 @@ public class Storage
 			file1.write("\n\n");
 			file1.flush();
 			file1.close();
+			return true;
 		}
 		catch (IOException e)
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("saving content failed");
+			return false;
 		}
 	}
 
