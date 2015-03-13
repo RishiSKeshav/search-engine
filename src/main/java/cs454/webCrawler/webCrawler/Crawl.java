@@ -96,7 +96,7 @@ public class Crawl
 		    String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";		    
 		    file1 = new File(localpath1);
 		    
-		    String fileName2 = uuid + ".txt";
+		    String fileName2 = uuid + ".html";
 		    String localpath2 = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName2;		    
 		    File file2 = new File(localpath2);
 		    		    
@@ -222,7 +222,7 @@ public class Crawl
 		    }
 		  
 		    
-		    if(type.contains("text/html")){
+		    if(type.contains("text/html") || type.contains("application/xhtml")){
 		    	metadata.put("localpath", file2.getAbsolutePath());		    		    	
 		    	boolean flag = Storage.saveContent(toHTMLHandler,file2);
 		    	if(flag==true)
