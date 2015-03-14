@@ -22,7 +22,7 @@ public class App
     	
     	//Crawler.walk("http://www.vfx.lewebdev.com/a.html",2);
     	
-    	try
+    	/*try
 		{
 			new Crawler2().crawl("http://www.apple.com/",2);
 		}
@@ -31,9 +31,9 @@ public class App
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}    	
-    	Storage.writeFile(Crawl.file1);
+    	Storage.writeFile(Crawl.file1);*/
     	
-    	/*if(args[1]!=null && args[3]!=null){
+    	if(args[1]!=null && args[3]!=null){
     		try
     		{
     			System.out.println("Crawling started with " + args[1]);
@@ -47,6 +47,6 @@ public class App
     		}
     	}
     	
-    	Storage.writeFile(Crawl.file1);*/
+    	Storage.writeFile(Crawl.file1);
     }
 }
