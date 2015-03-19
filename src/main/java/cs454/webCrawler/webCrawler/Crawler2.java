@@ -31,7 +31,7 @@ public class Crawler2
 	Map<String,Integer> domainCount = new HashMap<String, Integer>();
 	static int i=0;
 	
-	public  void crawl(String url1,int depth)
+	public  void crawl(int depth,String url1)
 	{
 		
 		try
@@ -112,7 +112,7 @@ public class Crawler2
 		    						
 		    						LinksSet.add(l.getUri());
 		    						//System.out.println(l.getUri());
-		    						crawl(l.getUri(),depth);
+		    						crawl(depth,l.getUri());
 		    					}
 		    				}
 		    				else
@@ -133,7 +133,7 @@ public class Crawler2
 		    								count++;	    		
 				    						LinksSet.add(l.getUri());
 				    						System.out.println("Current Depth: " + count +"\n");
-				    						crawl(l.getUri(),depth);
+				    						crawl(depth,l.getUri());
 				    					}
 		    						}
 		    					}

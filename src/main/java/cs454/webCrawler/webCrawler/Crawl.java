@@ -93,21 +93,37 @@ public class Crawl
 		    
 		    String fileName1 = uuid + ".json";
 		    /*String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\"+ fileName1;*/
-		    String localpath1 = "I:\\books\\CS454(information Retrieval)\\data\\Crawler\\Crawler.json";		    
+		    String localpath1 = System.getProperty("user.dir")+"\\"+"data\\Crawler";	
+		    File dir1 = new File(localpath1);
+		    if(!dir1.exists())
+		    {
+		    	dir1.mkdirs();
+		    }
+		    
+		    localpath1= localpath1+"\\Crawler.json";
+		    
 		    file1 = new File(localpath1);
 		    
 		    String fileName2 = uuid + ".html";
-		    String localpath2 = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName2;		    
+		    String localpath2 = System.getProperty("user.dir")+"\\"+"data\\Content\\"+ fileName2;		    
 		    File file2 = new File(localpath2);
 		    		    
 		    String fileName="";
-		    String fileType="";		    
+		    String fileType="";		
+		    
+		    String localpath = System.getProperty("user.dir")+"\\"+"data\\Content";
+		    File dir2 = new File(localpath);
+		    if(!dir2.exists())
+		    {
+		    	dir2.mkdirs();
+		    }
+		    
 		    
 		    if(type.equals("application/vnd.ms-powerpoint"))
 		    {
 		    	fileType = ".ppt";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+			    localpath = localpath+ fileName;		    
 			    File file = new File(localpath); 
 			    
 			    metadata.put("localpath", file.getAbsolutePath());
@@ -121,7 +137,7 @@ public class Crawl
 		    {
 		    	fileType = ".xml";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);  
 			    
 			    metadata.put("localpath", file.getAbsolutePath());
@@ -134,7 +150,7 @@ public class Crawl
 		    {
 		    	fileType = ".xlsx";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);  
 			    
 			    metadata.put("localpath", file.getAbsolutePath());
@@ -147,7 +163,7 @@ public class Crawl
 		    	fileType = ".doc";
 		    	fileType = ".xlsx";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);  
 		    	
 		    	metadata.put("localpath", file.getAbsolutePath());
@@ -163,7 +179,7 @@ public class Crawl
 		    {
 		    	fileType = ".gif";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);  
 			    
 			    metadata.put("localpath", file.getAbsolutePath());
@@ -175,7 +191,7 @@ public class Crawl
 		    {
 		    	fileType = ".png";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);
 			    
 			    metadata.put("localpath", file.getAbsolutePath());
@@ -188,7 +204,7 @@ public class Crawl
 		    {
 		    	fileType = ".jpg";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);  
 			    
 			    metadata.put("localpath", file.getAbsolutePath());
@@ -200,7 +216,7 @@ public class Crawl
 		    {
 		    	fileType = ".pdf";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);  
 			    
 			    metadata.put("localpath", file.getAbsolutePath());
@@ -212,7 +228,7 @@ public class Crawl
 		    {
 		    	fileType = ".pdf";
 		    	fileName= uuid+fileType;
-			    String localpath = "I:\\books\\CS454(information Retrieval)\\data\\Content\\"+ fileName;		    
+		    	 localpath = localpath+"\\"+ fileName;		    
 			    File file = new File(localpath);  
 			    
 			    metadata.put("localpath", file.getAbsolutePath());

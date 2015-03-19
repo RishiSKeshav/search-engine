@@ -24,7 +24,7 @@ public class App
     	
     	/*try
 		{
-			new Crawler2().crawl("http://www.apple.com/",2);
+			new Crawler2().crawl(2,"http://www.apple.com/");
 		}
 		catch (Exception e)
 		{
@@ -38,7 +38,7 @@ public class App
     		{
     			System.out.println("Crawling started with " + args[1]);
     			
-    			new Crawler2().crawl(args[1].trim(),Integer.parseInt(args[3]));
+    			new Crawler2().crawl(Integer.parseInt(args[1]),args[3].trim());
     		}
     		catch (Exception e)
     		{

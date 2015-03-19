@@ -80,7 +80,7 @@
   </dependencies>
   
   <build>
-  <finalName>Crawler</finalName>
+  <finalName>crawler</finalName>
   <plugins>
  
    <!-- download source code in Eclipse, best practice -->
