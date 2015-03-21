@@ -20,6 +20,7 @@ public class Crawler1
 	String Dname="";
 	ArrayList<String> domainName=new ArrayList<String>();
 	
+	@SuppressWarnings("static-access")
 	void crawl(String URL,int depth) throws SSLHandshakeException {
 		try {
 			//uuid=UUID.randomUUID();

@@ -1,6 +1,6 @@
 package cs454.webCrawler.webCrawler;
 
-import java.net.MalformedURLException;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +31,7 @@ public class Crawler2
 	Map<String,Integer> domainCount = new HashMap<String, Integer>();
 	static int i=0;
 	
+	@SuppressWarnings("static-access")
 	public  void crawl(int depth,String url1)
 	{
 		

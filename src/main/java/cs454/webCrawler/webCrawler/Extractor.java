@@ -15,7 +15,7 @@ import org.json.simple.parser.ParseException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+
 
 public class Extractor
 {
@@ -127,7 +127,7 @@ public class Extractor
 			String path = file1.getAbsolutePath();
 			
 			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-			Gson uglyJson = new Gson();
+			
 			String pretJson = prettyGson.toJson(jsonArrayToPrint);
 			
 			

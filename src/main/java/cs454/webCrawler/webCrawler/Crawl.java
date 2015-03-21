@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.apache.commons.io.FilenameUtils;
+
+
 import org.apache.tika.Tika;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
@@ -22,13 +23,12 @@ import org.apache.tika.sax.TeeContentHandler;
 import org.apache.tika.sax.ToHTMLContentHandler;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import org.xml.sax.ContentHandler;
 
 public class Crawl
 {
 	static File file1;
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "unused" })
 	public static void parse(String url1)
 	{
 		
@@ -256,6 +256,7 @@ public class Crawl
 	}
 	
 	
+	@SuppressWarnings("unused")
 	public void parse1(String URL)
 	{
 		try

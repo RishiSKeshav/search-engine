@@ -2,7 +2,6 @@ package cs454.webCrawler.webCrawler;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.DomainCombiner;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -23,6 +22,7 @@ public class Crawler
 		      .compile("(\\d{1,3}\\.){3}(\\d{1,3})");
 
 	static int count=0;
+	@SuppressWarnings("unused")
 	public static void walk(String url,int depth) {
 		
 		 
@@ -125,6 +125,7 @@ public class Crawler
 		    return candidate;
 		  }
 	
+	@SuppressWarnings("unused")
 	private static Map<String, Object> parse(String url) {
 		Map<String,Object> metadata =new HashMap<String, Object>();
 		
@@ -172,11 +173,13 @@ public class Crawler
 		}
 	}
 
+	@SuppressWarnings("unused")
 	private static void print(String msg, Object... args) {
         System.out.println(String.format(msg, args));
     }
 
-    private static String trim(String s, int width) {
+    @SuppressWarnings("unused")
+	private static String trim(String s, int width) {
         if (s.length() > width)
             return s.substring(0, width-1) + ".";
         else

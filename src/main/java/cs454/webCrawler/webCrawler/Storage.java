@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +21,7 @@ public class Storage
 {
 	static JSONArray jsonArray = new JSONArray();
 	
+	@SuppressWarnings({ "unused", "unchecked" })
 	public static void save(Map<String, Object> metadata, File file1) {
 		
 		FileWriter fstream;
@@ -111,7 +111,7 @@ public class Storage
 			String path = file1.getAbsolutePath();
 			
 			Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-			Gson uglyJson = new Gson();
+		
 			String pretJson = prettyGson.toJson(jsonArray);
 			
 			

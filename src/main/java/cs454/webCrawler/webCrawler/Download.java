@@ -1,12 +1,12 @@
 package cs454.webCrawler.webCrawler;
 
-import java.io.File;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.UUID;
+
 
 
 public class Download 
@@ -22,7 +22,8 @@ public class Download
 	     * @param saveDir path of the directory to save the file
 	     * @throws IOException
 	     */
-	    public static boolean downloadFile(String fileURL, String saveDir)
+	    @SuppressWarnings("unused")
+		public static boolean downloadFile(String fileURL, String saveDir)
 	            throws IOException {
 	        URL url = new URL(fileURL);
 	        HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
